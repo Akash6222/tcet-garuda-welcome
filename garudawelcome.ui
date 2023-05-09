@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>garudawelcome</class>
- <widget class="QDialog" name="garudawelcome">
+ <class>tcetwelcome</class>
+ <widget class="QDialog" name="tcetwelcome">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,11 +17,11 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Garuda Welcome</string>
+   <string>tcet Welcome</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../../usr/share/pixmaps/garuda-welcome.png</normaloff>../../../usr/share/pixmaps/garuda-welcome.png</iconset>
+    <normaloff>../../../usr/share/pixmaps/tcet-welcome.png</normaloff>../../../usr/share/pixmaps/tcet-welcome.png</iconset>
   </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
@@ -103,7 +103,7 @@
        <item row="0" column="0" colspan="2">
         <widget class="QLabel" name="labelTitle">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Garuda Linux &amp;quot;Hawk Eagle&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;tcet Linux &amp;quot;Hawk Eagle&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -113,7 +113,7 @@
        <item row="2" column="0" colspan="2">
         <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
-          <string>Garuda</string>
+          <string>tcet</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="2" column="6" alignment="Qt::AlignHCenter">
@@ -163,11 +163,11 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Garuda
+             <string>tcet
 Network Assistant</string>
             </property>
             <property name="icon">
-             <iconset theme="garuda-network-assistant">
+             <iconset theme="tcet-network-assistant">
               <normaloff>.</normaloff>.</iconset>
             </property>
             <property name="iconSize">
@@ -193,10 +193,10 @@ Network Assistant</string>
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Garuda Boot Repair</string>
+             <string>tcet Boot Repair</string>
             </property>
             <property name="icon">
-             <iconset theme="garuda-boot-repair">
+             <iconset theme="tcet-boot-repair">
               <normaloff>.</normaloff>.</iconset>
             </property>
             <property name="iconSize">
@@ -251,10 +251,10 @@ Network Assistant</string>
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Garuda Boot Options</string>
+             <string>tcet Boot Options</string>
             </property>
             <property name="icon">
-             <iconset theme="garuda-boot-options">
+             <iconset theme="tcet-boot-options">
               <normaloff>.</normaloff>.</iconset>
             </property>
             <property name="iconSize">
@@ -272,7 +272,7 @@ Network Assistant</string>
            </widget>
           </item>
           <item row="0" column="0" alignment="Qt::AlignHCenter">
-           <widget class="QToolButton" name="buttonGarudaAssistant">
+           <widget class="QToolButton" name="buttontcetAssistant">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -280,10 +280,10 @@ Network Assistant</string>
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Garuda Assistant</string>
+             <string>tcet Assistant</string>
             </property>
             <property name="icon">
-             <iconset theme="garuda-assistant">
+             <iconset theme="tcet-assistant">
               <normaloff>.</normaloff>.</iconset>
             </property>
             <property name="iconSize">
@@ -397,7 +397,7 @@ Network Assistant</string>
            </widget>
           </item>
           <item row="0" column="4" alignment="Qt::AlignHCenter">
-           <widget class="QToolButton" name="buttonGarudaSettings">
+           <widget class="QToolButton" name="buttontcetSettings">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -405,11 +405,11 @@ Network Assistant</string>
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Garuda
+             <string>tcet
 Settings Manager</string>
             </property>
             <property name="icon">
-             <iconset theme="garuda-settings-manager">
+             <iconset theme="tcet-settings-manager">
               <normaloff>.</normaloff>.</iconset>
             </property>
             <property name="iconSize">
@@ -427,7 +427,7 @@ Settings Manager</string>
            </widget>
           </item>
           <item row="0" column="2" alignment="Qt::AlignHCenter">
-           <widget class="QToolButton" name="buttonGarudaGamer">
+           <widget class="QToolButton" name="buttontcetGamer">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -435,10 +435,10 @@ Settings Manager</string>
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Garuda Gamer</string>
+             <string>tcet Gamer</string>
             </property>
             <property name="icon">
-             <iconset theme="garuda-gamer">
+             <iconset theme="tcet-gamer">
               <normaloff>.</normaloff>.</iconset>
             </property>
             <property name="iconSize">
@@ -608,7 +608,7 @@ Settings Manager</string>
        <item row="1" column="0" colspan="2">
         <widget class="QLabel" name="labelIntro">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;A rolling release, fast, friendly and performance focused OS.&lt;br/&gt;Garuda is loaded with amazing tools and supported by a great community.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;A rolling release, fast, friendly and performance focused OS.&lt;br/&gt;tcet is loaded with amazing tools and supported by a great community.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -621,7 +621,7 @@ Settings Manager</string>
        <item row="3" column="0" colspan="2">
         <widget class="QGroupBox" name="groupBox_web">
          <property name="title">
-          <string>Garuda Services</string>
+          <string>tcet Services</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
           <item row="1" column="2" alignment="Qt::AlignHCenter">
@@ -892,7 +892,7 @@ Settings Manager</string>
     </widget>
    </item>
    <item row="15" column="1" colspan="2">
-    <widget class="QPushButton" name="buttonInstallGaruda">
+    <widget class="QPushButton" name="buttonInstalltcet">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -909,7 +909,7 @@ Settings Manager</string>
       <bool>false</bool>
      </property>
      <property name="text">
-      <string>Install Garuda Linux</string>
+      <string>Install tcet Linux</string>
      </property>
      <property name="icon">
       <iconset theme="system-installer">
@@ -943,7 +943,7 @@ Settings Manager</string>
   <connection>
    <sender>buttonCancel</sender>
    <signal>pressed()</signal>
-   <receiver>garudawelcome</receiver>
+   <receiver>tcetwelcome</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">

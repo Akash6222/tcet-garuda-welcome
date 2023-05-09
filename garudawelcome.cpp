@@ -1,31 +1,31 @@
 /**********************************************************************
- *  garudawelcome.cpp
+ *  tcetwelcome.cpp
  **********************************************************************
- * Copyright (C) 2015 Garuda Authors
+ * Copyright (C) 2015 tcet Authors
  *
  * Authors: Adrian
  *          Paul David Callahan
  *          Dolphin Oracle
- *          Garuda Linux <http://garudalinux.org>
+ *          tcet Linux <http://tcetlinux.org>
  *
- * This file is part of garuda-welcome.
+ * This file is part of tcet-welcome.
  *
- * garuda-welcome is free software: you can redistribute it and/or modify
+ * tcet-welcome is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * garuda-welcome is distributed in the hope that it will be useful,
+ * tcet-welcome is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with garuda-welcome.  If not, see <http://www.gnu.org/licenses/>.
+ * along with tcet-welcome.  If not, see <http://www.gnu.org/licenses/>.
  **********************************************************************/
 
-#include "garudawelcome.h"
-#include "ui_garudawelcome.h"
+#include "tcetwelcome.h"
+#include "ui_tcetwelcome.h"
 
 #include <QDebug>
 #include <QDesktopServices>
@@ -34,25 +34,25 @@
 #include <QSettings>
 #include <QUrl>
 
-garudawelcome::garudawelcome(QWidget* parent)
+tcetwelcome::tcetwelcome(QWidget* parent)
     : QDialog(parent)
-    , ui(new Ui::garudawelcome)
+    , ui(new Ui::tcetwelcome)
 {
     ui->setupUi(this);
     setup();
 }
 
-garudawelcome::~garudawelcome()
+tcetwelcome::~tcetwelcome()
 {
     delete ui;
 }
 
-bool garudawelcome::isFirstLaunch()
+bool tcetwelcome::isFirstLaunch()
 {
     QSettings settings;
 
-    if (settings.value("garuda-welcome/firstRun").isNull()) {
-        settings.setValue("garuda-welcome/firstRun", false);
+    if (settings.value("tcet-welcome/firstRun").isNull()) {
+        settings.setValue("tcet-welcome/firstRun", false);
 
         QProcess proc;
         proc.start("last", { "reboot" });
@@ -65,7 +65,7 @@ bool garudawelcome::isFirstLaunch()
 }
 
 // do various setup tasks
-void garudawelcome::setup()
+void tcetwelcome::setup()
 {
     version = getVersion();
     codename = getCodename();
@@ -73,8 +73,8 @@ void garudawelcome::setup()
     QFont f("Noto Sans", 16, QFont::Bold);
     ui->labelTitle->setFont(f);
     ui->labelTitle->setText(description + " " + codename);
-    this->setWindowTitle(tr("Garuda Welcome"));
-    if (system("[ -f ~/.config/autostart/garuda-welcome.desktop ]") == 0) {
+    this->setWindowTitle(tr("tcet Welcome"));
+    if (system("[ -f ~/.config/autostart/tcet-welcome.desktop ]") == 0) {
         ui->checkBox->setChecked(true);
     } else {
         ui->checkBox->setChecked(false);
@@ -86,7 +86,7 @@ void garudawelcome::setup()
         ui->checkBox->hide();
         ui->pushButton_setupassistant->hide();
     } else {
-        ui->buttonInstallGaruda->hide();
+        ui->buttonInstalltcet->hide();
         ui->buttonChroot->hide();
         ui->buttonBootRepair->hide();
         ui->buttonTimeshift->setText("BTRFS Assistant");
@@ -124,7 +124,7 @@ void garudawelcome::setup()
 }
 
 // Util function for getting bash command output and error code
-Result garudawelcome::runCmd(QString cmd, bool include_stderr)
+Result tcetwelcome::runCmd(QString cmd, bool include_stderr)
 {
     QProcess proc(this);
     if (include_stderr)
@@ -137,31 +137,31 @@ Result garudawelcome::runCmd(QString cmd, bool include_stderr)
 }
 
 // Get version of the program
-QString garudawelcome::getVersion()
+QString tcetwelcome::getVersion()
 {
     QString cmd = QString("lsb_release -r | cut -f2");
     return runCmd(cmd).output;
 }
 
 // Get distribution name and codename of the program
-QString garudawelcome::getCodename()
+QString tcetwelcome::getCodename()
 {
     QString cmd = QString("lsb_release -c | cut -f2");
     return runCmd(cmd).output;
 }
 
-QString garudawelcome::getDescription()
+QString tcetwelcome::getDescription()
 {
     QString cmd = QString("lsb_release -d | cut -f2");
     return runCmd(cmd).output;
 }
 
 // About button clicked
-void garudawelcome::on_buttonAbout_clicked()
+void tcetwelcome::on_buttonAbout_clicked()
 {
     this->hide();
     QMessageBox msgBox(QMessageBox::NoIcon,
-        tr("About Garuda Welcome"), "<p align=\"center\"><b><h2>" + tr("Garuda Welcome") + "</h2></b></p><p align=\"center\">" + tr("Version: ") + version + "</p><p align=\"center\"><h3>" + tr("Program for displaying a welcome screen in Garuda Linux") + "</h3></p><p align=\"center\"><a href=\"http://www.garudalinux.org/\">http://www.garudalinux.org/</a><br /></p><p align=\"center\">" + tr("Copyright (c) Garuda Linux") + "<br /><br /></p>", 0, this);
+        tr("About tcet Welcome"), "<p align=\"center\"><b><h2>" + tr("tcet Welcome") + "</h2></b></p><p align=\"center\">" + tr("Version: ") + version + "</p><p align=\"center\"><h3>" + tr("Program for displaying a welcome screen in tcet Linux") + "</h3></p><p align=\"center\"><a href=\"http://www.tcetlinux.org/\">http://www.tcetlinux.org/</a><br /></p><p align=\"center\">" + tr("Copyright (c) tcet Linux") + "<br /><br /></p>", 0, this);
     msgBox.addButton(tr("License"), QMessageBox::AcceptRole);
     msgBox.addButton(tr("Cancel"), QMessageBox::NoRole);
     if (msgBox.exec() == QMessageBox::AcceptRole) {
@@ -171,180 +171,180 @@ void garudawelcome::on_buttonAbout_clicked()
 }
 
 // Add/remove autostart at login
-void garudawelcome::on_checkBox_clicked(bool checked)
+void tcetwelcome::on_checkBox_clicked(bool checked)
 {
     if (checked) {
-        system("cp /usr/share/applications/garuda-welcome.desktop ~/.config/autostart/garuda-welcome.desktop");
+        system("cp /usr/share/applications/tcet-welcome.desktop ~/.config/autostart/tcet-welcome.desktop");
     } else {
-        system("rm ~/.config/autostart/garuda-welcome.desktop >/dev/null 2>&1");
+        system("rm ~/.config/autostart/tcet-welcome.desktop >/dev/null 2>&1");
     }
 }
 
 // Launch Forum in browser
-void garudawelcome::on_buttonForum_clicked()
+void tcetwelcome::on_buttonForum_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://forum.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://forum.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonWebsite_clicked()
+void tcetwelcome::on_buttonWebsite_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://www.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://www.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonGitlab_clicked()
+void tcetwelcome::on_buttonGitlab_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://gitlab.com/groups/garuda-linux/"));
+    QDesktopServices::openUrl(QUrl("https://gitlab.com/groups/tcet-linux/"));
 }
 
-void garudawelcome::on_buttonRepository_clicked()
+void tcetwelcome::on_buttonRepository_clicked()
 {
     QDesktopServices::openUrl(QUrl("https://aur.chaotic.cx"));
 }
 
-void garudawelcome::on_buttonTelegram_clicked()
+void tcetwelcome::on_buttonTelegram_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://telegram.me/garudalinux"));
+    QDesktopServices::openUrl(QUrl("https://telegram.me/tcetlinux"));
 }
 
-void garudawelcome::on_buttonTwitter_clicked()
+void tcetwelcome::on_buttonTwitter_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://twitter.com/garudalinux"));
+    QDesktopServices::openUrl(QUrl("https://twitter.com/tcetlinux"));
 }
 
-void garudawelcome::on_buttonBitwarden_clicked()
+void tcetwelcome::on_buttonBitwarden_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://bitwarden.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://bitwarden.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonPrivatebin_clicked()
+void tcetwelcome::on_buttonPrivatebin_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://bin.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://bin.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonCryptpad_clicked()
+void tcetwelcome::on_buttonCryptpad_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://pad.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://pad.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonBigbluebutton_clicked()
+void tcetwelcome::on_buttonBigbluebutton_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://meet.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://meet.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonNextcloud_clicked()
+void tcetwelcome::on_buttonNextcloud_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://cloud.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://cloud.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonStatping_clicked()
+void tcetwelcome::on_buttonStatping_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://status.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://status.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonWhoogle_clicked()
+void tcetwelcome::on_buttonWhoogle_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://search.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://search.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonSearx_clicked()
+void tcetwelcome::on_buttonSearx_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://searx.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://searx.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonWiki_clicked()
+void tcetwelcome::on_buttonWiki_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://wiki.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://wiki.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonElement_clicked()
+void tcetwelcome::on_buttonElement_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://element.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://element.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonfaq_clicked()
+void tcetwelcome::on_buttonfaq_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://forum.garudalinux.org/t/garuda-linux-faq/318/"));
+    QDesktopServices::openUrl(QUrl("https://forum.tcetlinux.org/t/tcet-linux-faq/318/"));
 }
 
-void garudawelcome::on_buttonDonate_clicked()
+void tcetwelcome::on_buttonDonate_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://garudalinux.org/donate.html"));
+    QDesktopServices::openUrl(QUrl("https://tcetlinux.org/donate.html"));
 }
 
-void garudawelcome::on_buttonIrc_clicked()
+void tcetwelcome::on_buttonIrc_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://irc.garudalinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://irc.tcetlinux.org/"));
 }
 
-void garudawelcome::on_buttonDiscord_clicked()
+void tcetwelcome::on_buttonDiscord_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://garudalinux.org/discord"));
+    QDesktopServices::openUrl(QUrl("https://tcetlinux.org/discord"));
 }
 
-void garudawelcome::on_buttonGarudaSettings_clicked()
+void tcetwelcome::on_buttontcetSettings_clicked()
 {
-    if (!checkAndInstall("garuda-settings-manager"))
+    if (!checkAndInstall("tcet-settings-manager"))
         return;
     this->hide();
-    system("garuda-settings-manager");
+    system("tcet-settings-manager");
     this->show();
 }
 
-void garudawelcome::on_buttonGarudaAssistant_clicked()
+void tcetwelcome::on_buttontcetAssistant_clicked()
 {
-    if (!checkAndInstall("garuda-assistant"))
+    if (!checkAndInstall("tcet-assistant"))
         return;
     this->hide();
-    system("garuda-assistant");
+    system("tcet-assistant");
     this->show();
 }
 
-void garudawelcome::on_buttonGarudaGamer_clicked()
+void tcetwelcome::on_buttontcetGamer_clicked()
 {
-    if (!checkAndInstall("garuda-gamer"))
+    if (!checkAndInstall("tcet-gamer"))
         return;
     this->hide();
-    system("garuda-gamer");
+    system("tcet-gamer");
     this->show();
 }
 
-void garudawelcome::on_buttonBootOptions_clicked()
+void tcetwelcome::on_buttonBootOptions_clicked()
 {
-    if (!checkAndInstall("garuda-boot-options"))
+    if (!checkAndInstall("tcet-boot-options"))
         return;
     this->hide();
-    system("/usr/lib/garuda/pkexec-gui garuda-boot-options");
+    system("/usr/lib/tcet/pkexec-gui tcet-boot-options");
     this->show();
 }
 
-void garudawelcome::on_buttonBootRepair_clicked()
+void tcetwelcome::on_buttonBootRepair_clicked()
 {
-    if (!checkAndInstall("garuda-boot-repair"))
+    if (!checkAndInstall("tcet-boot-repair"))
         return;
     this->hide();
-    system("/usr/lib/garuda/pkexec-gui garuda-boot-repair");
+    system("/usr/lib/tcet/pkexec-gui tcet-boot-repair");
     this->show();
 }
 
-void garudawelcome::on_buttonNetworkAssistant_clicked()
+void tcetwelcome::on_buttonNetworkAssistant_clicked()
 {
-    if (!checkAndInstall("garuda-network-assistant"))
+    if (!checkAndInstall("tcet-network-assistant"))
         return;
     this->hide();
-    system("/usr/lib/garuda/pkexec-gui garuda-network-assistant");
+    system("/usr/lib/tcet/pkexec-gui tcet-network-assistant");
     this->show();
 }
 
-void garudawelcome::on_buttonTimeshift_clicked()
+void tcetwelcome::on_buttonTimeshift_clicked()
 {
     if (!checkAndInstall("btrfs-assistant"))
         return;
     this->hide();
-    system("/usr/lib/garuda/pkexec-gui btrfs-assistant");
+    system("/usr/lib/tcet/pkexec-gui btrfs-assistant");
     this->show();
 }
 
-void garudawelcome::on_buttonPartition_clicked()
+void tcetwelcome::on_buttonPartition_clicked()
 {
     this->hide();
     if (QFile::exists("/usr/bin/gnome-disk-utility")) {
@@ -361,7 +361,7 @@ void garudawelcome::on_buttonPartition_clicked()
     this->show();
 }
 
-void garudawelcome::on_buttonSystemCleaner_clicked()
+void tcetwelcome::on_buttonSystemCleaner_clicked()
 {
     this->hide();
     if (QFile::exists("/usr/bin/stacer")) {
@@ -378,7 +378,7 @@ void garudawelcome::on_buttonSystemCleaner_clicked()
     this->show();
 }
 
-void garudawelcome::on_buttonSoftware_clicked()
+void tcetwelcome::on_buttonSoftware_clicked()
 {
     this->hide();
     if (QFile::exists("/usr/bin/pamac-manager")) {
@@ -392,7 +392,7 @@ void garudawelcome::on_buttonSoftware_clicked()
     this->show();
 }
 
-void garudawelcome::on_buttonInstallGaruda_clicked()
+void tcetwelcome::on_buttonInstalltcet_clicked()
 {
     this->hide();
     if (QFile::exists("/usr/bin/kvantummanager")) {
@@ -403,23 +403,23 @@ void garudawelcome::on_buttonInstallGaruda_clicked()
     this->show();
 }
 
-void garudawelcome::on_buttonChroot_clicked()
+void tcetwelcome::on_buttonChroot_clicked()
 {
     this->hide();
-    system("/usr/lib/garuda/launch-terminal \"pkexec garuda-chroot -a; read -p 'Press enter to exit'\"");
+    system("/usr/lib/tcet/launch-terminal \"pkexec tcet-chroot -a; read -p 'Press enter to exit'\"");
     this->show();
 }
 
-void garudawelcome::on_pushButton_setupassistant_clicked()
+void tcetwelcome::on_pushButton_setupassistant_clicked()
 {
-    if (!checkAndInstall("garuda-setup-assistant"))
+    if (!checkAndInstall("tcet-setup-assistant"))
         return;
     this->hide();
     system("setup-assistant");
     this->show();
 }
 
-bool garudawelcome::checkAndInstall(QString package)
+bool tcetwelcome::checkAndInstall(QString package)
 {
     // Not async, don't really care either tho, not my problem
     // Assumption: package is a safe string
@@ -430,7 +430,7 @@ bool garudawelcome::checkAndInstall(QString package)
         return true;
 
     this->hide();
-    runCmd("/usr/lib/garuda/launch-terminal \"/usr/lib/garuda/install-software " + package + "; read -p 'Press enter to exit'\"");
+    runCmd("/usr/lib/tcet/launch-terminal \"/usr/lib/tcet/install-software " + package + "; read -p 'Press enter to exit'\"");
 
     // Checking pamac-installer's exit code alone is not enough. For some reason it decides to return 0 even tho it failed sometimes
     output = runCmd("pacman -Qq " + package, false);

@@ -1,31 +1,31 @@
 # **********************************************************************
-# * Copyright (C) 2015 Garuda Authors
+# * Copyright (C) 2015 tcet Authors
 # *
 # * Authors: Adrian
 # *          Paul David Callahan
-# *          Garuda & MEPIS Community <http://forum.mepiscommunity.org>
+# *          tcet & MEPIS Community <http://forum.mepiscommunity.org>
 # *
-# * This file is part of garuda-welcome.
+# * This file is part of tcet-welcome.
 # *
-# * garuda-welcome is free software: you can redistribute it and/or modify
+# * tcet-welcome is free software: you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
 # * the Free Software Foundation, either version 3 of the License, or
 # * (at your option) any later version.
 # *
-# * garuda-welcome is distributed in the hope that it will be useful,
+# * tcet-welcome is distributed in the hope that it will be useful,
 # * but WITHOUT ANY WARRANTY; without even the implied warranty of
 # * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # * GNU General Public License for more details.
 # *
 # * You should have received a copy of the GNU General Public License
-# * along with garuda-welcome.  If not, see <http://www.gnu.org/licenses/>.
+# * along with tcet-welcome.  If not, see <http://www.gnu.org/licenses/>.
 # **********************************************************************/
 
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = garuda-welcome
+TARGET = tcet-welcome
 TEMPLATE = app
 
 # Build section
@@ -55,12 +55,12 @@ unix {
         target.path = $$BINDIR
 
         desktop.path = $$PREFIX/share/applications/
-        desktop.files = "garuda-welcome.desktop"
+        desktop.files = "tcet-welcome.desktop"
 
         icons.path = /usr/share/icons/hicolor/scalable/apps/
-        icons.files = garuda-welcome.png
+        icons.files = tcet-welcome.png
 
-        SCRIPTS_PATH = $$PREFIX/share/garuda/
+        SCRIPTS_PATH = $$PREFIX/share/tcet/
 
         scripts.files = scripts
         scripts.path  = $$SCRIPTS_PATH
@@ -71,11 +71,11 @@ unix {
 
 
 SOURCES += main.cpp\
-        garudawelcome.cpp
+        tcetwelcome.cpp
 
-HEADERS  += garudawelcome.h
+HEADERS  += tcetwelcome.h
 
-FORMS    += garudawelcome.ui
+FORMS    += tcetwelcome.ui
 
 RESOURCES += \
     images.qrc
@@ -91,14 +91,14 @@ DISTFILES += \
     icons/element.svg \
     icons/forum.svg \
     icons/freshstatus.svg \
-    icons/garuda-assistant.svg \
-    icons/garuda-boot-options.png \
-    icons/garuda-boot-repair.png \
-    icons/garuda-gamer.svg \
-    icons/garuda-green.png \
-    icons/garuda-logo.png \
-    icons/garuda-network-assistant.png \
-    icons/garuda-settings.png \
+    icons/tcet-assistant.svg \
+    icons/tcet-boot-options.png \
+    icons/tcet-boot-repair.png \
+    icons/tcet-gamer.svg \
+    icons/tcet-green.png \
+    icons/tcet-logo.png \
+    icons/tcet-network-assistant.png \
+    icons/tcet-settings.png \
     icons/gitlab.png \
     icons/logo.png \
     icons/nextcloud.svg \

@@ -1,32 +1,32 @@
 /**********************************************************************
- *  garudawelcome.h
+ *  tcetwelcome.h
  **********************************************************************
- * Copyright (C) 2020 Garuda Authors
- *          Garuda Linux <http://garudalinux.in>
+ * Copyright (C) 2020 tcet Authors
+ *          tcet Linux <http://tcetlinux.in>
  *
- * This file is part of garuda-welcome.
+ * This file is part of tcet-welcome.
  *
- * garuda-welcome is free software: you can redistribute it and/or modify
+ * tcet-welcome is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * garuda-welcome is distributed in the hope that it will be useful,
+ * tcet-welcome is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with garuda-welcome.  If not, see <http://www.gnu.org/licenses/>.
+ * along with tcet-welcome.  If not, see <http://www.gnu.org/licenses/>.
  **********************************************************************/
 
-#ifndef GarudaWELCOME_H
-#define GarudaWELCOME_H
+#ifndef tcetWELCOME_H
+#define tcetWELCOME_H
 
 #include <QMessageBox>
 
 namespace Ui {
-class garudawelcome;
+class tcetwelcome;
 }
 
 struct Result {
@@ -34,12 +34,12 @@ struct Result {
     QString output;
 };
 
-class garudawelcome : public QDialog {
+class tcetwelcome : public QDialog {
     Q_OBJECT
 
 public:
-    explicit garudawelcome(QWidget* parent = 0);
-    ~garudawelcome();
+    explicit tcetwelcome(QWidget* parent = 0);
+    ~tcetwelcome();
 
     Result runCmd(QString cmd, bool include_stderr = true);
     QString getVersion();
@@ -63,13 +63,13 @@ private slots:
 
     void on_buttonGitlab_clicked();
 
-    void on_buttonGarudaSettings_clicked();
+    void on_buttontcetSettings_clicked();
 
     void on_buttonTimeshift_clicked();
 
     void on_buttonPartition_clicked();
 
-    void on_buttonInstallGaruda_clicked();
+    void on_buttonInstalltcet_clicked();
 
     void on_buttonChroot_clicked();
 
@@ -109,9 +109,9 @@ private slots:
 
     void on_buttonfaq_clicked();
 
-    void on_buttonGarudaAssistant_clicked();
+    void on_buttontcetAssistant_clicked();
 
-    void on_buttonGarudaGamer_clicked();
+    void on_buttontcetGamer_clicked();
 
     void on_buttonBootRepair_clicked();
 
@@ -124,8 +124,8 @@ private slots:
     void on_buttonDiscord_clicked();
 
 private:
-    Ui::garudawelcome* ui;
+    Ui::tcetwelcome* ui;
     bool checkAndInstall(QString packagename);
 };
 
-#endif // GarudaSNAPSHOT_H
+#endif // tcetSNAPSHOT_H
