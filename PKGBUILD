@@ -8,8 +8,9 @@ pkgdesc="A Welcome app for tcet Linux"
 arch=('any')
 url="https://github.com/Akash6222"
 license=('GPL3')
-depends=('qt5-base' 'xdg-utils' 'tcet-libs>=1.3.0')
-optdepends=( 'xorg-xrandr' 'xorg-xinput' 'tcet-assistant' 'tcet-network-assistant' 'qwikaccess' 'tcet-gamer' 'tcet-boot-options')
+depends=('qt5-base' 'xdg-utils' 'garuda-libs>=1.3.0')
+optdepends=( 'xorg-xrandr' 'xorg-xinput' 'garuda-assistant' 'garuda-network-assistant' 'qwikaccess' 'garuda-gamer' 'garuda-boot-options')
+
 makedepends=('git')
 groups=('tcet')
 
