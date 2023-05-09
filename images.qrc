@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/Moodle.png</file>
+        <file>icons/bbb.png</file>
+        <file>icons/bitwarden.svg</file>
+        <file>icons/cryptpad.png</file>
+        <file>icons/element.svg</file>
+        <file>icons/freshstatus.svg</file>
+        <file>icons/garuda-settings.png</file>
+        <file>icons/gitlab.png</file>
+        <file>icons/logo.png</file>
+        <file>icons/nextcloud.svg</file>
+        <file>icons/privatebin.png</file>
+        <file>icons/searx.svg</file>
+        <file>icons/twitter.png</file>
+        <file>icons/whoogle.png</file>
+        <file>icons/garuda-assistant.svg</file>
+        <file>icons/garuda-gamer.svg</file>
+    </qresource>
+</RCC>
