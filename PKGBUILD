@@ -6,7 +6,7 @@ pkgver=1.2.1
 pkgrel=1
 pkgdesc="A Welcome app for Garuda Linux"
 arch=('any')
-url="https://gitlab.com/garuda-linux/applications/garuda-welcome"
+url="https://github.com/Akash6222/welcome"
 license=('GPL3')
 depends=('qt5-base' 'xdg-utils' 'garuda-libs>=1.3.0')
 optdepends=( 'xorg-xrandr' 'xorg-xinput' 'garuda-assistant' 'garuda-network-assistant' 'qwikaccess' 'garuda-gamer' 'garuda-boot-options')
