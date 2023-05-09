@@ -6,22 +6,18 @@ pkgver=1.2.1
 pkgrel=1
 pkgdesc="A Welcome app for Garuda Linux"
 arch=('any')
-url="https://github.com/Akash6222/welcome"
+url="https://github.com/Akash6222"
 license=('GPL3')
 depends=('qt5-base' 'xdg-utils' 'garuda-libs>=1.3.0')
 optdepends=( 'xorg-xrandr' 'xorg-xinput' 'garuda-assistant' 'garuda-network-assistant' 'qwikaccess' 'garuda-gamer' 'garuda-boot-options')
 makedepends=('git')
 groups=('garuda')
-source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('SKIP')
 
-build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	qmake-qt5 $pkgname.pro
-	make
-}
+
+source=(${pkgname}::"git+${url}/${pkgname}")
+sha256sums=('SKIP')
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make INSTALL_ROOT=$pkgdir install
+	install -dm755 ${pkgdir}${destname}
+	cp -r ${srcdir}/${pkgname}${destname}/* ${pkgdir}${destname}
 }
