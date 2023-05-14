@@ -188,12 +188,12 @@ void tcetwelcome::on_buttonForum_clicked()
 
 void tcetwelcome::on_buttonWebsite_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://www.tcetlinux.org/"));
+    QDesktopServices::openUrl(QUrl("https://opensource.tcetmumbai.in/docs/projects/tcet-linux/about-tcet-linux"));
 }
 
 void tcetwelcome::on_buttonGitlab_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://gitlab.com/groups/tcet-linux/"));
+    QDesktopServices::openUrl(QUrl("https://github.com/tcet-opensource/tcet-linux"));
 }
 
 void tcetwelcome::on_buttonRepository_clicked()
@@ -201,14 +201,14 @@ void tcetwelcome::on_buttonRepository_clicked()
     QDesktopServices::openUrl(QUrl("https://aur.chaotic.cx"));
 }
 
-void tcetwelcome::on_buttonTelegram_clicked()
+void tcetwelcome::on_buttonInstagram_clicked()
 {
     QDesktopServices::openUrl(QUrl("https://telegram.me/tcetlinux"));
 }
 
 void tcetwelcome::on_buttonTwitter_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://twitter.com/tcetlinux"));
+    QDesktopServices::openUrl(QUrl("https://twitter.com/tcetopensource"));
 }
 
 void tcetwelcome::on_buttonBitwarden_clicked()
@@ -278,15 +278,15 @@ void tcetwelcome::on_buttonIrc_clicked()
 
 void tcetwelcome::on_buttonDiscord_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://tcetlinux.org/discord"));
+    QDesktopServices::openUrl(QUrl("https://discord.com/invite/r7ZhAREg2M"));
 }
 
 void tcetwelcome::on_buttontcetSettings_clicked()
 {
-    if (!checkAndInstall("tcet-settings-manager"))
+    if (!checkAndInstall("settings-manager"))
         return;
     this->hide();
-    system("tcet-settings-manager");
+    system("settings-manager");
     this->show();
 }
 
